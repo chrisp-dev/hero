@@ -24,7 +24,24 @@ app.get('/', function (req, res) {
 //     res.sendFile(path.join(__dirname, "assets", "images", "scoob.jpg"));
 // });
 
-// app.listen
+
+var tables = [];
+
+var waitlist = [];
+
+app.post("/api/tables", function(req, res) {
+
+    var newReservation = req.body;
+  
+    console.log(newReservation);
+  
+    tables.push(newReservation);
+  
+    res.json(newReservation);
+});
+
+
+ // app.listen
 app.listen(PORT, function () {
     console.log("Listening on port " + PORT);
 });
