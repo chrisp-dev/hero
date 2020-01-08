@@ -13,7 +13,7 @@ app.use('/images', express.static(path.join(__dirname, "assets", "images")));
 app.use(express.static(path.join(__dirname, "views")));
 // app.get
 app.get('/', function (req, res) {
-    res.json("Welcome to the API!");
+    res.sendFile(path.join(__dirname, "views", "hot-reserve.html"));
 });
 
 // app.get('/api/scoob', (req, res) => {
