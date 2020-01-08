@@ -9,7 +9,11 @@ const PORT = process.env.PORT || 3000;
 
 const readFileAsync = util.promisify(fs.readFile);
 
-const TableList = [];
+let TableList = [];
+
+let tables = [];
+
+let waitlist = [];
 
 readFileAsync(path.join(__dirname, "Tables.json"))
     .then(data => {
@@ -48,9 +52,35 @@ app.get('/api/tablelist', (req, res) => {
     res.json(tables);
 });
 
-app.get("/api/wholelist", (req,res) => {
+app.get("/api/wholelist", (req, res) => {
     res.json(TableList)
 })
+
+app.delete('/api/tablelist/:id', (req, res) => {
+    const id = JSON.parse(req.params.id);
+    const tmpTbl = [];
+    tables = [];
+    waitlist = [];
+    for (let i = 0; i < TableList.length; i++) {
+        if (TableList[i].id === id) {
+            console.log(`Removing Reservation ${TableList[i].id}`);
+        } else {
+            tmpTbl.push(TableList[i]);
+            if (i < 5) {
+                tables.push(TableList[i]);
+            } else {
+                waitlist.push(TableList[i]);
+            }
+        }
+    }
+
+    TableList = tmpTbl;
+
+    fs.writeFile("Tables.json", JSON.stringify(TableList), (err) => {
+        console.log('Saved Tables.json updates');
+    });
+    res.send("Successfully deleted");
+});
 
 app.get('/api/waitlist', (req, res) => {
     let reserveId = req.params.id;
@@ -58,9 +88,7 @@ app.get('/api/waitlist', (req, res) => {
 });
 
 app.post('/api/reserve', (req, res) => {
-    // console.log(req.body);
     const newTable = new Table(req.body);
-    console.log(newTable);
     TableList.push(newTable);
 
     for (let i = 0; i < TableList.length; i++) {
@@ -77,10 +105,6 @@ app.post('/api/reserve', (req, res) => {
     });
 });
 
-
-var tables = [];
-
-var waitlist = [];
 
 app.post("/api/tables", function (req, res) {
 
