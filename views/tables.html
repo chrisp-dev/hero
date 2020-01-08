@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reserve</title>
+    <!-- Bootstrap CSS 3.3.7 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery JS 3.1.0 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body class="container">
+    <div class="jumbotron text-center">
+        <h1>Hot Restaurant</h1>
+        <hr>
+        <h3>Only 5 tables left! Hurry and make a reservation! At your leisure..</h3>
+        <div class="form-group">
+            <button class="btn btn-primary" id="makeReservation">Make Reservation</button>
+            <button class="btn btn-primary">Home</button>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Tables</h4>
+        </div>
+        <div class="panel-body">
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#makeReservation").click(function () {
+                document.location.href = "/hot-reserve.html";
+            });
+        });
+    </script>
+</body>
+
+</html>
