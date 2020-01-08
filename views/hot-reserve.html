@@ -28,24 +28,24 @@
         </div>
         <div class="panel-body">
 
-            <form role="form">
+            <form id="myform" role="form">
                 <div class="form-group">
                     <label for>Name</label>
-                    <input class="form-control" type="text" id="reserve_name">
+                    <input required class="form-control" type="text" id="reserve_name">
                 </div>
                 <div class="form-group">
                     <label for>Phone Number</label>
-                    <input class="form-control" type="text" id="reserve_phone">
+                    <input required class="form-control" type="phone" id="reserve_phone">
                 </div>
                 <div class="form-group">
                     <label for>Email</label>
-                    <input class="form-control" type="text" id="reserve_email">
+                    <input required class="form-control" type="email" id="reserve_email">
                 </div>
                 <div class="form-group">
-                    <label for>Unique ID Derrrp</label>
-                    <input class="form-control" type="text" id="reserve_id">
+                    <label for>Unique ID</label>
+                    <input required class="form-control" type="text" id="reserve_id">
                 </div>
-                <button class="btn btn-primary">Submit</button>
+                <button id="btnSubmit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
@@ -54,6 +54,20 @@
             $("#viewTables").click(function () {
                 document.location.href = "/tables.html";
             });
+
+            $("#btnSubmit").click(function () {
+                event.preventDefault();
+                const reservation = {
+                    name: $("#reserve_name").val().trim(),
+                    phone: $("#reserve_phone").val().trim(),
+                    email: $("#reserve_email").val().trim(),
+                    id: $("#reserve_id").val().trim()
+                }
+                $.post('/api/reserve', reservation).then(data => {
+                    alert("Posting reservation...\nProcessing " + data.id);
+                });
+            });
+
         });
     </script>
 </body>
