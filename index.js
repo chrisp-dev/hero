@@ -39,11 +39,16 @@ app.get('/', function (req, res) {
 });
 
 app.get('/api/tablelist', (req, res) => {
-    res.json(TableList);
+    res.json(tables);
 });
 
-app.get('/api/waitlist/:id', (req, res) => {
+app.get("/api/wholelist", (req,res) => {
+    res.json(TableList)
+})
+
+app.get('/api/waitlist', (req, res) => {
     let reserveId = req.params.id;
+    res.json(waitlist)
 });
 
 app.post('/api/reserve', (req, res) => {
@@ -51,6 +56,15 @@ app.post('/api/reserve', (req, res) => {
     const newTable = new Table(req.body);
     console.log(newTable);
     TableList.push(newTable);
+
+    for (let i = 0; i < TableList.length; i++) {
+        if (i <= 4) {
+            tables.push(TableList[i]);
+        } else {
+            waitlist.push(TableList[i])
+        }
+    }
+
     fs.writeFile("Tables.json", JSON.stringify(TableList), (err) => {
         console.log('file written');
         res.json(newTable);

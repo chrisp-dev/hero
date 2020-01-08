@@ -42,7 +42,7 @@
             $("#home").click(function () {
                 document.location.href = "/home.html";
             });
-            $.get("/api/tablelist").then(function (data) {
+            $.get("/api/wholelist").then(function (data) {
                 // console.log(data)
                 let name = JSON.stringify(data.name);
                 let phoneNumber = JSON.stringify(data.phone);
