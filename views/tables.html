@@ -27,6 +27,12 @@
             <h4 class="panel-title">Tables</h4>
         </div>
         <div class="panel-body">
+            <div class="well">
+                <h2>
+                    <span class="label label-primary">1</span>
+                    |rtb
+                </h2>
+            </div>
         </div>
     </div>
     <script>
@@ -39,6 +45,10 @@
             });
             $.get("/api/tablelist").then(function(data){
                 console.log(data)
+                let name = JSON.stringify(data.name);
+                let phoneNumber = JSON.stringify(data.phone);
+                let email = JSON.stringify(data.email);
+                let id = JSON.stringify(data.id)
             })
         });
 
