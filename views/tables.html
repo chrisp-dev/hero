@@ -19,7 +19,7 @@
         <h3>Only 5 tables left! Hurry and make a reservation! At your leisure..</h3>
         <div class="form-group">
             <button class="btn btn-primary" id="makeReservation">Make Reservation</button>
-            <button class="btn btn-primary">Home</button>
+            <button class="btn btn-primary" id="home">Home</button>
         </div>
     </div>
     <div class="panel panel-default">
@@ -33,6 +33,11 @@
         $(document).ready(function () {
             $("#makeReservation").click(function () {
                 document.location.href = "/hot-reserve.html";
+            });
+        });
+        $(document).ready(function () {
+            $("#home").click(function () {
+                document.location.href = "/home.html";
             });
         });
     </script>

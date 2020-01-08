@@ -8,6 +8,8 @@
     <title>Reserve</title>
     <!-- Bootstrap CSS 3.3.7 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery JS 3.1.0 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 
 <body class="container">
@@ -16,8 +18,8 @@
         <hr>
         <h3>Make your reservation</h3>
         <div class="form-group">
-            <button class="btn btn-primary">View Tables</button>
-            <button class="btn btn-primary">Make Reservation</button>
+            <button class="btn btn-primary" id="viewTables">View Tables</button>
+            <button class="btn btn-primary" id="makeReservation">Make Reservation</button>
         </div>
     </div>
     <footer class="footer">
@@ -29,6 +31,18 @@
             </p>
         </div>
     </footer>
+    <script>
+        $(document).ready(function () {
+            $("#makeReservation").click(function () {
+                document.location.href = "/hot-reserve.html";
+            });
+        });
+        $(document).ready(function () {
+            $("#viewTables").click(function () {
+                document.location.href = "/tables.html";
+            });
+        });
+    </script>
 </body>
 
 </html>
