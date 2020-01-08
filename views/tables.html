@@ -34,16 +34,13 @@
             $("#makeReservation").click(function () {
                 document.location.href = "/hot-reserve.html";
             });
-        });
-        $(document).ready(function () {
             $("#home").click(function () {
                 document.location.href = "/home.html";
             });
+            $.get("/api/tablelist").then(function(data){
+                console.log(data)
+            })
         });
-
-        $.get('/api/tablelist', function (data, textStatus, jqXHR) {  // success callback
-                console.log('status: ' + textStatus + ', data:' + data);
-            });
 
     </script>
 </body>
