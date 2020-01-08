@@ -40,6 +40,11 @@
                 document.location.href = "/home.html";
             });
         });
+
+        $.get('/wait.json', function (data, textStatus, jqXHR) {  // success callback
+                console.log('status: ' + textStatus + ', data:' + data);
+            });
+
     </script>
 </body>
 
