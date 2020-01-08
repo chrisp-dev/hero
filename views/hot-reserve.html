@@ -19,7 +19,7 @@
         <h3>Make your reservation</h3>
         <div class="form-group">
             <button class="btn btn-primary" id="viewTables">View Tables</button>
-            <button class="btn btn-primary">Home</button>
+            <button class="btn btn-primary" id="home">Home</button>
         </div>
     </div>
     <div class="panel panel-default">
@@ -69,8 +69,11 @@
             });
 
         });
-
-        
+        $(document).ready(function () {
+            $("#home").click(function () {
+                document.location.href = "/home.html";
+            });
+        });
     </script>
 </body>
 
