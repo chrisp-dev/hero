@@ -66,6 +66,8 @@
                 $.post('/api/reserve', reservation).then(data => {
                     alert("Posting reservation...\nProcessing " + data.id);
                 });
+                $("#myform")[0].reset();
+                
             });
 
         });

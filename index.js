@@ -13,8 +13,15 @@ const TableList = [];
 
 readFileAsync(path.join(__dirname, "Tables.json"))
     .then(data => {
-        if (data.length)
-            TableList.push(...JSON.parse(data));
+        if (data.length){
+            const dat = JSON.parse(data);
+            dat.forEach(element => {
+                const table2 = new Table(element)
+                TableList.push(table2);
+                // console.log(element);                
+            });
+            // TableList.push(...JSON.parse(data));
+        }
     }).catch(err => {
         console.log(err);
     });
