@@ -50,6 +50,7 @@
                 let id = JSON.stringify(data.id)
                 console.log(data[0].name)
 
+
                 for (let i = 0; i <= 4; i++) {
                     console.log(data[i])
                     const newRow = `<div class="well">
@@ -68,10 +69,20 @@
                                             <span class="label label-primary">${i - 4}</span>
                                             |${data[i].name}
                                         </h2>
+                                        <button class="btn btn-primary float-right" id="clear">Clear</button>
                                     </div>`
 
                     $("#someID2").append(newRow2)
                 }
+                $("#clear").click(function () {
+                    // clears the stuff from the index of that item
+                    const index = data.indexOf(i);
+                    if (index > -1) {
+                        data.splice(index, i);
+                    }
+                    // reloads the page
+                    window.location.reload();
+                });
             })
         });
 
