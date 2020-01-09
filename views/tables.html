@@ -54,11 +54,12 @@
                 for (let i = 0; i <= 4; i++) {
                     console.log(data[i])
                     const newRow = `<div class="well">
-                <h2>
-                    <span class="label label-primary">${i + 1}</span>
-                    |${data[i].name}
-                </h2>
-            </div>`
+                                        <h2>
+                                            <span class="label label-primary">${i + 1}</span>
+                                            |${data[i].name}
+                                        </h2>
+                                        <button class="btn btn-primary float-right" id="clear">Clear</button>
+                                    </div>`
 
                     $("#someID").append(newRow)
                 }
